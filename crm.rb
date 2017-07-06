@@ -77,7 +77,7 @@ class CRM
   end
 
   def display_all_contacts
-    print Contact.all.inspect
+    puts Contact.all.inspect
   end
 
   def search_by_attribute
