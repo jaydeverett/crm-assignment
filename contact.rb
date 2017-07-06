@@ -66,25 +66,25 @@ class Contact
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute, value)
-    if attribute == @last_name
+    if attribute == "last_name"
       @@contacts.each do |contact|
         if contact.last_name == value
           return contact
         end
       end
-    elsif attribute == @first_name
+    elsif attribute == "first_name"
       @@contacts.each do |contact|
         if contact.first_name == value
           return contact
         end
       end
-    elsif attribute == @email
+    elsif attribute == "email"
       @@contacts.each do |contact|
         if contact.email == value
           return contact
         end
       end
-    elsif attribute == @note
+    elsif attribute == "note"
       @@contacts.each do |contact|
         if contact.note == value
           return contact
@@ -98,6 +98,7 @@ class Contact
   # This method should delete all of the contacts
   def self.delete_all
     @@contacts.clear
+    # @@contacts = []
   end
 
   def full_name
@@ -115,3 +116,5 @@ class Contact
 
 end
 end
+
+a = Contact.create('jay', 'deverett', 'j@gmail.com', 'debater')
