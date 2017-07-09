@@ -53,7 +53,7 @@ class CRM
   end
 
   def modify_existing_contact
-    print "Who's contact would you like to modify?"
+    print "Whose contact would you like to modify?"
     print "Please enter their first name: "
     name = gets.chomp
 
@@ -63,7 +63,7 @@ class CRM
     print "What would you like to chance it to?"
     value = gets.chomp
 
-    Contact.find_by('first_name', name).update(attribute, value)
+    contacts = Contact.find_by('first_name', name).update(attribute, value)
   end
 
   def delete_contact

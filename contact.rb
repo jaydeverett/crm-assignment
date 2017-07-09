@@ -13,6 +13,7 @@ class Contact
     @note = note
     @id = @@id
 
+
     @@id += 1 # this way the next contact will get a different id
   end
   # This method should call the initializer,
@@ -96,7 +97,8 @@ end
 
   # This method should delete all of the contacts
   def self.delete_all
-    @@contacts = []
+    @@contacts.clear
+    puts @@contacts
   end
 
   def full_name
@@ -133,13 +135,12 @@ puts ""
 puts Contact.find_by('email', 'mr@gmail.com').inspect
 puts ""
 
-c.delete #NOT WORKING
-puts Contact.all
-puts ""
+#c.delete #can only be used from instance
 
-puts b.full_name
-puts ""
 
-Contact.delete_all
 
-puts Contact.all.inspect
+# puts b.full_name can only be called from instance
+
+
+#
+# Contact.delete_all WTF?
