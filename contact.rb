@@ -25,14 +25,16 @@ class Contact
 
   # This method should return all of the existing contacts
   def self.all
-    puts @@contacts
+    @@contacts
   end
 
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
     @@contacts.each do |contact|
-      return contact if Contact.id == id
+      if contact.id == id
+        return contact
+      end
     end
   end
 
@@ -61,15 +63,15 @@ class Contact
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
 
   def self.find_by(attribute, value)
-    if attribute == "last_name"
+    if attribute == "first_name"
       @@contacts.each do |contact|
-        if contact.last_name == value
+        if contact.first_name == value
           return contact
         end
       end
-    elsif attribute == "first_name"
+    elsif attribute == "last_name"
       @@contacts.each do |contact|
-        if contact.first_name == value
+        if contact.last_name == value
           return contact
         end
       end
@@ -89,12 +91,12 @@ class Contact
       return nil
     end
   end
+end
 
 
   # This method should delete all of the contacts
   def self.delete_all
-    @@contacts.clear
-    # @@contacts = []
+    @@contacts = []
   end
 
   def full_name
@@ -103,17 +105,41 @@ class Contact
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete(contact)
-    @@contacts.delete(contact)
+  def delete
+    @@contacts.delete(self)
   end
 
 
   # Feel free to add other methods here, if you need them.
 
-end
+
 
 
 a = Contact.create('jay', 'deverett', 'j@gmail.com', 'debater')
 b = Contact.create('ben', 'smith', 'bs@gmail.com', 'dude')
 c = Contact.create('alex', 'norris', 'an@gmail.com', 'wizard')
 d = Contact.create('mike', 'rajf', 'mr@gmail.com', 'sup')
+
+puts Contact.all.inspect
+puts ""
+
+puts Contact.find(2).inspect
+puts ""
+
+a.update("email", "jaydev@gmail.com")
+puts a.inspect
+puts ""
+
+puts Contact.find_by('email', 'mr@gmail.com').inspect
+puts ""
+
+c.delete #NOT WORKING
+puts Contact.all
+puts ""
+
+puts b.full_name
+puts ""
+
+Contact.delete_all
+
+puts Contact.all.inspect
