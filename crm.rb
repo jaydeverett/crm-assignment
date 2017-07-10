@@ -60,15 +60,17 @@ class CRM
   def modify_existing_contact
     print "Whose contact would you like to modify?"
     print "Please enter their first name: "
-    name = gets.chomp
+    name = gets.chomp.downcase
 
     print "Which attribute would you like to change?"
-    attribute = gets.chomp
+    attribute = gets.chomp.downcase
 
-    print "What would you like to chance it to?"
-    value = gets.chomp
+    print "What would you like to change it to?"
+    value = gets.chomp.downcase
 
-    contacts = Contact.find_by('first_name', name).update(attribute, value)
+    contacts = Contact.find_by(
+    first_name: name
+    ).update(attribute => value)
   end
 
   def delete_contact
@@ -96,7 +98,7 @@ class CRM
     print "Please enter the value you'd like to search"
     value = gets.chomp.downcase
 
-    puts Contact.find_by(attribute, value)
+    puts Contact.find_by(attribute, value).inspect
   end
 
 
