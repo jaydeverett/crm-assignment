@@ -100,3 +100,7 @@ end
 
 my_crm = CRM.new("jay")
 my_crm.main_menu
+
+at_exit do
+  ActiveRecord::Base.connection.close
+end
